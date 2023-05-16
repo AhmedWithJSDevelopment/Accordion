@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Progress Bar</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Raleway", sans-serif;
+            background: #f3f7ff;
+        }
+        
+        .container {
+            margin: 80px auto;
+            width: 500px;
+        }
+        
+        .container h2 {
+            margin: 40px 0px;
+            text-align: center;
+            color: #111;
+            font-size: 25px;
+        }
+        
+        .container .list {
+            border-top: 1px solid #d4d4d4;
+            border-botom: 1px solid #d4d4d4;
+            border-left: 2px solid #d4d4d4;
+            border-right: 2px solid #d4d4d4;
+            background: #fff;
+            box-shadow: 0px 0px 15px 2px rgba(110, 155, 210, 0.5);
+        }
+        
+        .container .list .item .question {
+            border-bottom: 1px solid #d4d4d4;
+            border-top: 1px solid #d4d4d4;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .container .list .item .question>span {
+            width: 20px;
+            text-align: center;
+            font-size: 20px;
+        }
+        
+        .container .list .item .question>span span:nth-child(2) {
+            display: none;
+        }
+        
+        .container .list .item .answer {
+            max-height: 0px;
+            overflow: hidden;
+            transition: max-height 300ms ease-in-out;
+        }
+        
+        .container .list .item .answer p {
+            padding: 10px 20px;
+            color: #555;
+            background: #f9f9f9;
+        }
+        
+        .container .list .item.active .question,
+        .container .list .item:hover .question {
+            background: #0997de;
+            color: #f5f5f5;
+        }
+        
+        .container .list .item.active .question>span span:nth-child(1) {
+            display: none;
+        }
+        
+        .container .list .item.active .question>span span:nth-child(2) {
+            display: block;
+        }
+        
+        .container .list .item.active .answer {
+            max-height: 500px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="list">
+            <div class="item">
+                <div class="question">
+                    How do you sum numbers in JavaScript?
+                    <span>
+          <span>+</span>
+                    <span>-</span>
+                    </span>
+                </div>
+                <div class="answer">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit voluptatum velit, cum, ipsam impedit dolores vitae nisi animi repellat quae deleniti facere magni. Maiores, consequuntur at corporis tenetur et id.</p>
+                    <p>Impedit atque sit quaerat! Quae repellat culpa quos expedita? Tempora doloremque veritatis illum expedita voluptate consequuntur aliquid repudiandae quo, quam culpa hic suscipit facilis voluptas perspiciatis eum odit? Molestias, nostrum!</p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="question">
+                    How do you add two numbers together?
+                    <span>
+          <span>+</span>
+                    <span>-</span>
+                    </span>
+                </div>
+                <div class="answer">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum iste necessitatibus, tenetur ab nesciunt quod, saepe aperiam nobis debitis, pariatur libero quo eaque. Doloremque consectetur possimus, dolorem excepturi aliquam repudiandae?</p>
+                    <p>Exercitationem recusandae laborum fugit neque sequi quisquam et adipisci ipsam earum labore quidem inventore eveniet non, ipsum ea quibusdam necessitatibus asperiores odio magni rerum voluptates! Amet quas dolorum nihil quidem!</p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="question">
+                    How do you add all numbers in an array C++?
+                    <span>
+          <span>+</span>
+                    <span>-</span>
+                    </span>
+                </div>
+                <div class="answer">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat ut error blanditiis perspiciatis maiores voluptates, repellendus corrupti, iste vero accusamus aliquam itaque! Non, delectus. Exercitationem alias dolores quasi rerum
+                        voluptatibus.</p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="question">
+                    How do you find largest number in an array Java?
+                    <span>
+          <span>+</span>
+                    <span>-</span>
+                    </span>
+                </div>
+                <div class="answer">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio fuga eaque in ab recusandae consequatur aspernatur esse obcaecati deserunt beatae? Ipsum commodi quae dignissimos a temporibus eveniet illo dolore quidem.</p>
+                    <p>Doloribus sapiente explicabo provident quam quas tempora nobis error hic necessitatibus. Inventore aspernatur totam praesentium quam eos tempore quae voluptas? Accusantium incidunt itaque voluptatibus, ipsum repellendus animi est aliquid
+                        aliquam.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        let items = document.querySelectorAll(".container .list .item .question");
+
+        for (let i = 0; i < items.length; i++) {
+            items[i].addEventListener("click", function() {
+                if (items[i].parentElement.classList.contains("active")) {
+                    items[i].parentElement.classList.remove("active");
+                } else {
+                    try {
+                        document.querySelector(".container .list .item.active").classList.remove("active");
+                    } catch (msg) {}
+                    items[i].parentElement.classList.add("active");
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
